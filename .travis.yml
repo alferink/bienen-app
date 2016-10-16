@@ -1,3 +1,5 @@
 language: groovy
-script: ./grailsw refresh-dependencies
-     && ./grailsw test-app
+jdk:
+ - oraclejdk8
+#script: ./grailsw refresh-dependencies
+#     && ./grailsw test-app
