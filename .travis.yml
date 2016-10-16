@@ -1,9 +1,29 @@
 language: groovy
 jdk:
- - oraclejdk8
+- oraclejdk8
 cache:
-   directories:
-     - $HOME/.gradle/caches/
-     - $HOME/.gradle/wrapper/
-#script: ./grailsw refresh-dependencies
-#     && ./grailsw test-app
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+deploy:
+- provider: s3
+  access_key_id: AKIAIMXCBCQ6XYWL2O7Q
+  secret_access_key: &1
+    secure: jZNsefbUviMLQPRKQYtZ58IRfoNtp/Jaq9y3Fg5qpOB27Gb7OHlAloI+2DJrPsYjq0Uch+1BBg6rT9OTF8I5zNPIb4ajaKCgW3qAS8xIyp/ZOZmVuDZ9JQs2Sak0RrJFNmSHf9LkgF61YmEsEuDo7Vs47M9tbQNpSDAlUutVZKZ/xSc4o+91F+PwH/qZZMoe/jFTbiFtI/ltkOUwoRK1pjjPwY+UbxcoF2jM+lnErUQI/stGdIQFp5dxSN0tcfxYTPVISG7S2scUUQLjhHvSkKcM2EGkUB1Oh31ogMwezjnZvjl6QcFebpU30h+SayT+4cZ644eBqQJX2LR2t1ziCnaXzFys0LTWaIz0OoWzxtneFZN98q89EsI/CmOcQOdnxLdPJcLyIgmf4Dqudr4Cmeblx00juAcew0YN++/4nS7d3mcoX1+JljDGfX3KjYudtHUfsf1VcgNXKTGdv/bCVm1BUJKCn65yz/GfgfH3LsMifmcPc3jbNo5EWsVJHf6CvTfJWZcMWc8mS+62Zhlp9hxKe251g8jDmrHR+dbRK0gH3IzIY8JHj8ItZawftTV7yDinJbl6cRz3OYwmC6kloJaLZus3HicYWoC1UgiGl/JyOCnUeb5j02qogAJSY5DFXjjC7bjqK85U6TeeVwIk1st0yvXs4/4iP3N68ZcIXSs=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &2
+    repo: alferink/bienen-app
+  bucket: elasticbeanstalk-us-east-1-964393961277
+- provider: codedeploy
+  access_key_id: AKIAIMXCBCQ6XYWL2O7Q
+  secret_access_key: *1
+  bucket: elasticbeanstalk-us-east-1-964393961277
+  key: 'build/lib/bienen-app-0.1.0-alpha-2.war'
+#  bundle_type: ''
+  application: bienen-app
+  deployment_group: 'bienen-app-deployment-group'
+  on: *2
+before_deploy:
+- mkdir -p dpl_cd_upload
+- mv '' dpl_cd_upload/''
