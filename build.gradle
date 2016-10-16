@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-version "0.1.0-alpha-3"
+version "0.1.0-alpha-2"
 group "bienen.app"
 
 apply plugin:"eclipse"
