@@ -26,4 +26,4 @@ deploy:
   on: *2
 before_deploy:
 - mkdir -p dpl_cd_upload
-- mv build/lib/bienen-app-0.1.0-alpha-2.war dpl_cd_upload/''
+- mv build/libs/bienen-app-0.1.0-alpha-2.war dpl_cd_upload/''
