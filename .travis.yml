@@ -15,15 +15,22 @@ deploy:
   on: &2
     repo: alferink/bienen-app
   bucket: elasticbeanstalk-us-east-1-964393961277
-- provider: codedeploy
-  access_key_id: AKIAIMXCBCQ6XYWL2O7Q
-  secret_access_key: *1
-  bucket: elasticbeanstalk-us-east-1-964393961277
-  key: ''
-  bundle_type: ''
-  application: bienen-app
-  deployment_group: bienen-app-deployment-group
-  on: *2
+#- provider: codedeploy
+#  access_key_id: AKIAIMXCBCQ6XYWL2O7Q
+#  secret_access_key: *1
+#  bucket: elasticbeanstalk-us-east-1-964393961277
+#  key: ''
+#  bundle_type: ''
+#  application: bienen-app
+#  deployment_group: bienen-app-deployment-group
+#  on: *2
 before_deploy:
+- ls
+- cd build
+- ls
+- cd libs
+- ls
+- cd ..
+- cd ..
 - mkdir -p dpl_cd_upload
 - mv build/libs/bienen-app-0.1.0-alpha-2.war dpl_cd_upload/''
