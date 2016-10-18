@@ -23,8 +23,15 @@ deploy:
   key: 'S3 Bucket"'
 #  bundle_type: ''
   application: bienen-app
-  deployment_group: bienen-app-deployment-group
+  deployment_group: ci-deploy-role
   on: *2
 before_deploy:
+- ls
+- cd build
+- ls
+- cd libs
+- ls
+- cd ..
+- cd ..
 - mkdir -p dpl_cd_upload
 - mv build/libs/bienen-app-0.1.0-alpha-2.war dpl_cd_upload/''
