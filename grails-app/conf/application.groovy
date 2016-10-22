@@ -1,4 +1,5 @@
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.active = false
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'de.alferink.bienen.security.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'de.alferink.bienen.security.UserRole'
 grails.plugin.springsecurity.authority.className = 'de.alferink.bienen.security.Role'
@@ -15,8 +16,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/**/images/**', access: ['permitAll']],
         [pattern: '/**/favicon.ico', access: ['permitAll']],
         [pattern: '/test/**', access: ['ROLE_ADMIN']],
-        [pattern: '/console/**', access: ['permitAll']],
-        [pattern: '/dbconsole/**', access: ['permitAll']],
+        [pattern: '/console/**', access: ['ROLE_ADMIN']],
+        [pattern: '/dbconsole/**', access: ['ROLE_ADMIN']],
         [pattern: '/plugins/console*/**', access: ['ROLE_ADMIN']]
 ]
 
@@ -32,14 +33,3 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 //
 
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
-
-environments {
-    production {
-        dataSource {
-            driverClassName = "org.postgresql.Driver"
-            url = System.getenv("DB_URL")
-            username = System.getenv("DB_USERNAME")
-            password = System.getenv("DB_PASSWORD")
-        }
-    }
-}
