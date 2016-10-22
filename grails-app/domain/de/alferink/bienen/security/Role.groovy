@@ -9,6 +9,7 @@ class Role implements Serializable {
 
 	private static final long serialVersionUID = 1
 
+	String id
 	String authority
 
 	static constraints = {
@@ -18,5 +19,7 @@ class Role implements Serializable {
 	static mapping = {
 		table 'sec_role'
 		cache true
+
+		id generator: 'uuid'
 	}
 }

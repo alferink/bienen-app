@@ -2,6 +2,7 @@ package de.alferink.bienen
 
 class Bienenstand {
 
+    String id
     String name
     String standort
     BigDecimal x
@@ -12,5 +13,9 @@ class Bienenstand {
     ]
 
     static constraints = {
+    }
+
+    static mapping = {
+        id generator: 'uuid'
     }
 }
