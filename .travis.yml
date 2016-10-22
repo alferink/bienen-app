@@ -20,9 +20,9 @@ deploy:
   secret_access_key: &1
     secure: OUXiGcE+/kQ5RFYMQEZGuFZFr5l3+lt491SvfAVu7Efwk9AoYQPGEmoefgbaxs5BAU0IOessAbq9aotpAKYskgSwkXVwH1cgy5bpsF7kyPXHnyC8qkBfutgDOtK7w53leCNvRKt6Z92FTINxmdj4ZZmxn71h+j9GwyyeZ/SoOw3ZqjehWL6z9Ka1ia3czdqZWXFHgA+8I2oBboL1R2bGrnM3msfeH+Ya6zSa5ZbcqGydxEfZFvDn5LkDg7pCZ+igXw53nMTSKlZei5CNkNDshg48IQkOeulRZybRv5/hULpdfmc0lW0uskS59aA63OQGEQBpC10KiFHYsn36e88WDS5DNdebK/YCN9po+MCBzqKe0XAzQQNJrXxMqgtS+XSHY2DnUSGOfxUIFd8j9cGKncdf5638RRucPhHH0k8sRL/XZ9TDEhZGeysp2FtF3b6F3NT9OAvhyonEHQ4z3U6d/uNZvjYC39bhUGPYMH+MmvKFDk/FQKeq71FRdQJiqBEArMjiSH7k+bLjIhwVcolwn5VLCk3z7r1951Q3FmeU7/EOm1sA+36bwXawTcqXksuI0F/ztvVDQ8eBXJeVZwhgbAQ/W83HErB6cF9zorJ/lZ5JVwr0u7hKjKd86taeY/khpPjApCX/8m2TaJH7x4UBqzm4bVlFEbt8gwPNCuSLql4=
   bucket: "S3 Bucket"
-  key: 'build/libs/bienen-app-0.1.0-alpha-2.war'
+  key: 'build/libs/bienen-app-0.1.0-alpha-3.war'
   application: bienen-app
   deployment_group: bienen-app-deployment-group
 before_deploy:
 - mkdir -p dpl_cd_upload
-- mv build/libs/bienen-app-0.1.0-alpha-2.war dpl_cd_upload/''
+- mv build/libs/bienen-app-0.1.0-alpha-3.war dpl_cd_upload/''
