@@ -44,6 +44,7 @@ class User implements Serializable {
 	}
 
 	static mapping = {
+		table 'sec_user'
 		password column: '`password`'
 	}
 }
