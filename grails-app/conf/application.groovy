@@ -32,3 +32,14 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 //
 
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
+
+environments {
+    production {
+        dataSource {
+            driverClassName = "org.postgresql.Driver"
+            url = System.getenv("DB_URL")
+            username = System.getenv("DB_USERNAME")
+            password = System.getenv("DB_PASSWORD")
+        }
+    }
+}
