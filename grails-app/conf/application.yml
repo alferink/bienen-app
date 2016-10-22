@@ -107,11 +107,10 @@ environments:
     production:
         dataSource:
             dbCreate: none
-#            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-#            driverClassName: "org.postgresql.Driver"
-#            url: '${System.getProperty("DB_URL")}'
-#            username: '${DB_USERNAME}'
-#            password: '${DB_PASSWORD}'
+            driverClassName: org.postgresql.Driver
+            url: jdbc:postgresql://bienendb.cfmqpkmseo2q.us-east-1.rds.amazonaws.com:5432/bienendb1
+            username: root
+            password: bienen123
             properties:
                 jmxEnabled: true
                 initialSize: 5
