@@ -1,0 +1,1 @@
+${beehiveAction.quantityPerDay} <g:message code="varroaCheck.quantityPerDay.label" />

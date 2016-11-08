@@ -6,12 +6,13 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.2.0.min
-//= require bootstrap
 //= require_tree .
 //= require_self
 //= require /webjars/bootstrap/3.3.7-1/js/bootstrap.min
 //= require /webjars/bootstrap-tagsinput/0.6.1/bootstrap-tagsinput
 //= require /webjars/typeaheadjs/0.11.1/typeahead.bundle.js
+//= require star-rating.js
+//= require bee.js
 
 if (typeof jQuery !== 'undefined') {
     (function($) {

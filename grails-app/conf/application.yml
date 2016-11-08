@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: bienen.app
+        defaultPackage: bee.app
     spring:
         transactionManagement:
             proxies: false
@@ -96,18 +96,18 @@ environments:
     development:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:c:/temp/bienenDevDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:./bienenDevDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: none
+            dbCreate: update
             driverClassName: org.postgresql.Driver
-            url: jdbc:postgresql://bienendb.cfmqpkmseo2q.us-east-1.rds.amazonaws.com:5432/bienendb1
+            url: jdbc:postgresql://aatax21xls6omh.cfmqpkmseo2q.us-east-1.rds.amazonaws.com:5432/ebdb
             username: root
-            password: bienen123
+            password: bienen1+
             properties:
                 jmxEnabled: true
                 initialSize: 5
@@ -130,12 +130,18 @@ environments:
 ---
 grails:
   plugin:
+    databasemigration:
+      updateOnStart : false
+      updateOnStartFileName : 'changelog.groovy'
+---
+grails:
+  databinding:
+    dateFormats: ["yyyy-MM-dd'T'hh:mm", 'yyyy-MM-dd', 'yyyy-MM-dd HH:mm:ss.S', "yyyy-MM-dd'T'hh:mm:ss'Z'"]
+---
+grails:
+  plugin:
     console:
       enabled: true
----
-flyway:
-  enabled: true
-  baselineOnMigrate: true
 ---
 server:
   port: 8080

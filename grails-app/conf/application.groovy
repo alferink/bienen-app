@@ -1,8 +1,8 @@
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.active = true
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'de.alferink.bienen.security.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'de.alferink.bienen.security.UserRole'
-grails.plugin.springsecurity.authority.className = 'de.alferink.bienen.security.Role'
+grails.plugin.springsecurity.active = false
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'de.alferink.bee.security.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'de.alferink.bee.security.UserRole'
+grails.plugin.springsecurity.authority.className = 'de.alferink.bee.security.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/', access: ['permitAll']],
         [pattern: '/error', access: ['permitAll']],
@@ -15,6 +15,11 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/**/css/**', access: ['permitAll']],
         [pattern: '/**/images/**', access: ['permitAll']],
         [pattern: '/**/favicon.ico', access: ['permitAll']],
+        [pattern: '/apiary/**', access: ['ROLE_ADMIN']],
+        [pattern: '/beehive/**', access: ['ROLE_ADMIN']],
+        [pattern: '/beehive/**', access: ['ROLE_ADMIN']],
+        [pattern: '/beehiveMeasurement/**', access: ['ROLE_ADMIN']],
+        [pattern: '/beehiveAction/**', access: ['ROLE_ADMIN']],
         [pattern: '/test/**', access: ['ROLE_ADMIN']],
         [pattern: '/console/**', access: ['ROLE_ADMIN']],
         [pattern: '/dbconsole/**', access: ['ROLE_ADMIN']],
@@ -33,4 +38,5 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 //
 
-grails.plugin.springsecurity.password.algorithm = 'bcrypt'
+//grails.plugin.springsecurity.password.algorithm = 'bcrypt'
+//grails.plugin.springsecurity.userLookup.passwordPropertyName = 'pass'
