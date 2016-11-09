@@ -14,7 +14,7 @@ class Beehive {
     Date created
     HiveType hiveType
 
-    List<BeehiveAction> actions
+    Set<BeehiveAction> actions
     BeehiveCreation beehiveCreation
 
     Apiary apiary
@@ -23,9 +23,11 @@ class Beehive {
     Integer honigraum
 
     static hasMany = [
-            actions: BeehiveAction,
+            actions     : BeehiveAction,
             measurements: BeehiveMeasurement
     ]
+
+    static transients = ['sortedActions']
 
     static constraints = {
         brutraum min: 1
@@ -36,5 +38,16 @@ class Beehive {
 
     static mapping = {
         id generator: 'uuid'
+    }
+
+    List<BeehiveAction> getSortedActions(IntRange years) {
+        actions.findAll {
+            Calendar calendar = Calendar.getInstance()
+            calendar.setTime(it.date)
+            int year = calendar.get(Calendar.YEAR)
+            years.containsWithinBounds(year)
+        }.sort {
+            it.date
+        }.reverse()
     }
 }
