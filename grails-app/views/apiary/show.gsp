@@ -32,7 +32,7 @@
                      createUrl="[resource: 'beehiveCreation', action: 'create', params: [apiary: apiary.id]]">
             <b:panel label="${beehive.name}" headerUrl="[resource: 'beehive', action: 'show', id: beehive.id]">
                 ${beehive.name}<br/>
-                ${beehive.queen?.yearOfBirth}<br/>
+                ${beehive.queen?.year}<br/>
             </b:panel>
         </b:panelGrid>
     </div>

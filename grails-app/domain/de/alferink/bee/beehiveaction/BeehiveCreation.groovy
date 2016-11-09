@@ -13,13 +13,14 @@ class BeehiveCreation {
 
     Date created
     String name
+    Boolean hasQueen
     Queen queen
 
     Apiary apiary
 
     HiveType hiveType
-    Integer brutraum
-    Integer honigraum
+    Integer brutraum = 1
+    Integer honigraum = 0
 
     String anmerkungen
 
@@ -31,6 +32,7 @@ class BeehiveCreation {
         anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
         beehive cascadeValidation: true
         queen nullable: true
+        hasQueen nullable: true
     }
 
     static mapping = {
@@ -40,7 +42,11 @@ class BeehiveCreation {
     void execute() {
         beehive.created = created
         beehive.name = name
-        beehive.queen = queen
+        if(hasQueen != false) {
+            beehive.queen = queen
+        } else {
+            beehive.queen = null
+        }
         beehive.apiary = apiary
         beehive.hiveType = hiveType
         beehive.brutraum = brutraum

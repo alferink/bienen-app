@@ -11,6 +11,15 @@ class BeehiveController extends RestfulController<Beehive> {
         super(Beehive)
     }
 
+    protected List<Beehive> listAllResources(Map params) {
+        Apiary apiary = Apiary.get(params.apiary)
+        if(apiary) {
+            Beehive.findAllByApiary(apiary)
+        } else {
+            Beehive.list(params)
+        }
+    }
+
     @Override
     protected Beehive createResource() {
         BeehiveCreation beehiveCreation = new BeehiveCreation()

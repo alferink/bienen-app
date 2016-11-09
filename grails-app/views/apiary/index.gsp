@@ -23,7 +23,7 @@
             <div class="panel-body">
                 ${apiary.name}<br/>
 
-                <g:link resource="beehive" bienenstandId="${apiary.id}">${apiary.beehives.size()} Völker</g:link>
+                <g:link resource="beehive" params="[apiary: apiary.id]">${apiary.beehives.size()} Völker</g:link>
             </div>
         </div>
     </div>

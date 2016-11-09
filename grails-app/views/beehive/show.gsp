@@ -16,7 +16,19 @@
             <f:display bean="beehive" property="created"/>
             <f:display bean="beehive" property="name"/>
             <f:display bean="beehive" property="queen">
-                ${value?.yearOfBirth}
+                <g:if test="${value}">
+                    <a data-toggle="collapse" href="#queenCollapse" aria-expanded="false" aria-controls="queenCollapse">
+                        ${value} <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="queenCollapse">
+                        <div class="well">
+                            <g:render template="/queen/show" model="[queen: beehive.queen]" />
+                        </div>
+                    </div>
+                </g:if>
+                <g:else>
+                    -
+                </g:else>
             </f:display>
             <f:display bean="beehive" property="hiveType"/>
             <f:display bean="beehive" property="brutraum"/>
@@ -34,7 +46,7 @@
 
         <g:set var="actionCreate">
             <div class="dropdown">
-                <a id="dLabel" class="dropdown-toggle" data-target="#" href="http://example.com"
+                <a id="dLabel" class="dropdown-toggle" data-target="#" href="#"
                    data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="caret"></span>
                 </a>
@@ -97,7 +109,7 @@
                     </div>
 
                     <div>
-                        <g:render template="/beehiveAction/summary/beehiveAction"
+                        <g:render template="/beehiveCreation/summary"
                                   model="[beehiveAction: beehive.beehiveCreation]"/>
                     </div>
                 </li>

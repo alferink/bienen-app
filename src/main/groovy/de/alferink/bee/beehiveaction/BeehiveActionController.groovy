@@ -16,7 +16,7 @@ class BeehiveActionController<T extends BeehiveAction> extends RestfulController
 
     @Override
     protected T createResource() {
-        T beehiveAction = super.createResource(params)
+        T beehiveAction = super.createResource()
         if (!beehiveAction.date) {
             beehiveAction.date = new Date()
         }

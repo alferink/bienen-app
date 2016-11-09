@@ -13,7 +13,8 @@ enum BeehiveActionType {
     HONEY_HARVEST(HoneyHarvest),
     REVIEW(Review),
     VARROA_CHECK(VarroaCheck),
-    VARROA_TREATMENT(VarroaTreatment)
+    VARROA_TREATMENT(VarroaTreatment),
+    QUEEN_INSTALLATION(QueenInstallation)
 
     final Class<? extends BeehiveAction> actionClass
 
