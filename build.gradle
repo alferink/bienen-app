@@ -72,7 +72,7 @@ dependencies {
     runtime('org.postgresql:postgresql')
     compile 'org.liquibase:liquibase-core:3.5.3'
     compile "org.hibernate:hibernate-java8:5.1.1.Final"
-
+    compile 'org.grails.plugins:quartz:2.0.9'
 }
 
 assets {

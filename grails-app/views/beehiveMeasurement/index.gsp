@@ -10,6 +10,10 @@
     <body>
 
 
+    <g:form url="[resource:'beehive/beehiveMeasurement', beehiveId: params.beehiveId, action:'index']" method="get">
+        <g:select name="type" from="${de.alferink.bee.BeehiveMeasurement.MeasurementTyp.values()}" value="${params.type}" />
+        <g:submitButton name="Anzeigen" />
+    </g:form>
     <div id="tester" style="width:1200px; height:500px;"></div>
     <script>
         /*
