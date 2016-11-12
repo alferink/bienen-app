@@ -50,4 +50,13 @@ class Beehive {
             it.date
         }.reverse()
     }
+
+    String getLabel() {
+        name
+    }
+
+    @Override
+    String toString() {
+        getLabel()
+    }
 }

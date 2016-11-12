@@ -56,4 +56,11 @@ class BeehiveCreation {
     BeehiveActionType getType() {
         BeehiveActionType.CREATING
     }
+
+    boolean isInYears(IntRange years) {
+        Calendar calendar = Calendar.getInstance()
+        calendar.setTime(created)
+        int year = calendar.get(Calendar.YEAR)
+        years.containsWithinBounds(year)
+    }
 }

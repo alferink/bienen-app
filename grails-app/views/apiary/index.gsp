@@ -8,12 +8,6 @@
 
 <body>
 
-<content tag="breadcrumb">
-    <ol class="breadcrumb">
-        <li><g:link resource="apiary" action="index"><g:message code="apiary.plural.label" /></g:link></li>
-    </ol>
-</content>
-
 <div class="row">
 <g:each var="apiary" status="index" in="${apiaryList}">
     <div class="col-sm-4">

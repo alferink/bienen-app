@@ -1,36 +1,63 @@
-<div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="collapseListGroupHeading${year}">
-        <h4 class="panel-title">
-            <a href="#collapseListGroup${year}" class="collapsed" role="button" data-toggle="collapse"
-               aria-expanded="false"
-               aria-controls="collapseListGroup${year}">${year}</a>
-        </h4>
+
+<g:set var="yearActions" value="${beehive.getSortedActions(yearRange)}" />
+<g:set var="isBeehiveCreationInYearRange" value="${beehive.beehiveCreation?.isInYears(yearRange)}" />
+
+<g:if test="${yearActions || isBeehiveCreationInYearRange}">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="collapseListGroupHeading${yearRange.from}">
+            <h4 class="panel-title">
+                <a href="#collapseListGroup${yearRange.from}" class="collapsed" role="button" data-toggle="collapse"
+                   aria-expanded="false"
+                   aria-controls="collapseListGroup${yearRange.from}">${title}</a>
+            </h4>
+        </div>
+
+        <div class="collapse ${expanded ? 'in' : ''} panel-collapse" role="tabpanel" id="collapseListGroup${yearRange.from}"
+             aria-labelledby="collapseListGroupHeading${yearRange.from}">
+
+            <ul class="list-group">
+                <g:each in="${yearActions}">
+                    <li class="list-group-item">
+                        <div>
+                            <h4>
+                                ${it.type.label}
+                                <small>
+                                    <span>(<g:formatDate date="${it.date}" type="date"/>)</span>
+                                    <g:link resource="beehive/${it.type.propertyName}" beehiveId="${it.beehive.id}"
+                                            id="${it.id}" action="edit">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </g:link>
+                                </small>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <g:render template="/${it.type.propertyName}/summary" model="[beehiveAction: it]"/>
+                        </div>
+                    </li>
+                </g:each>
+
+                <g:if test="${beehive.beehiveCreation?.isInYears(yearRange)}">
+                    <li class="list-group-item">
+                        <div>
+                            <h4>
+                                ${beehive.beehiveCreation.type.label}
+                                <small>
+                                    <span>(<g:formatDate date="${beehive.beehiveCreation.created}" type="date"/>)</span>
+                                    <g:link resource="beehive/${beehive.beehiveCreation.type.propertyName}" beehiveId="${beehive.id}"
+                                            id="${beehive.beehiveCreation.id}" action="edit">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </g:link>
+                                </small>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <g:render template="/${beehive.beehiveCreation.type.propertyName}/summary" model="[beehiveAction: beehive.beehiveCreation]"/>
+                        </div>
+                    </li>
+                </g:if>
+            </ul>
+        </div>
     </div>
-
-    <div class="collapse ${expanded ? 'in' : ''} panel-collapse" role="tabpanel" id="collapseListGroup${year}"
-         aria-labelledby="collapseListGroupHeading${year}">
-
-        <ul class="list-group">
-            <g:each in="${yearActions}">
-                <li class="list-group-item">
-                    <div>
-                        <h4>
-                            ${it.type.label}
-                            <small>
-                                <span>(<g:formatDate date="${it.date}" type="date"/>)</span>
-                                <g:link resource="beehive/${it.type.propertyName}" beehiveId="${it.beehive.id}"
-                                        id="${it.id}" action="edit">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                </g:link>
-                            </small>
-                        </h4>
-                    </div>
-
-                    <div>
-                        <g:render template="/${it.type.propertyName}/summary" model="[beehiveAction: it]"/>
-                    </div>
-                </li>
-            </g:each>
-        </ul>
-    </div>
-</div>
+</g:if>

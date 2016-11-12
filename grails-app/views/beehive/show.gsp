@@ -8,6 +8,31 @@
 </head>
 
 <body>
+<content tag="header" >
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="pull-right" style="padding: 10px">
+                <g:link class="btn btn-default" resource="apiary" id="${beehive.apiary?.id}" action="show" >
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    ${beehive.apiary}
+                </g:link>
+                <g:set var="prevBeehive" value="${beehive.apiary?.getPrevBeehive(beehive)}" />
+                <g:if test="${prevBeehive}">
+                    <g:link class="btn btn-default" resource="beehive" id="${prevBeehive.id}" action="show" >
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                        ${prevBeehive}
+                    </g:link>
+                </g:if>
+                <g:set var="nextBeehive" value="${beehive.apiary?.getNextBeehive(beehive)}" />
+                <g:if test="${nextBeehive}">
+                    <g:link class="btn btn-default" resource="beehive" id="${nextBeehive.id}" action="show" >
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                        ${nextBeehive}
+                    </g:link>
+                </g:if>
+        </div>
+    </div>
+</content>
 
 <div class="row">
     <div class="col-md-6">
@@ -47,13 +72,5 @@
         <g:render template="show/actions-panel" />
     </div>
 </div>
-
-<content tag="footer">
-    <g:javascript>
-        $(document).ready(function () {
-            $('.dropdown-toggle').dropdown();
-        });
-    </g:javascript>
-</content>
 </body>
 </html>

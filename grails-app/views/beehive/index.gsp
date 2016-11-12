@@ -7,12 +7,6 @@
 </head>
 
 <body>
-<content tag="breadcrumb">
-    <ol class="breadcrumb">
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li class="active"><g:message code="default.list.label" args="[entityName]"/></li>
-    </ol>
-</content>
 
 <g:render template="beehiveGrid" />
 

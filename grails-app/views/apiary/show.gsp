@@ -27,7 +27,7 @@
     <div class="col-md-12">
         <b:panelGrid var="beehive"
                      width="3"
-                     in="${apiary.beehives}"
+                     in="${apiary.sortedBeehives}"
                      createLabel="${g.message(code:'default.create.label', args: [g.message(code: 'beehive.label')])}"
                      createUrl="[resource: 'beehiveCreation', action: 'create', params: [apiary: apiary.id]]">
             <b:panel label="${beehive.name}" headerUrl="[resource: 'beehive', action: 'show', id: beehive.id]">

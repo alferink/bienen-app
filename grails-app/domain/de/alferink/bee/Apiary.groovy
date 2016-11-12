@@ -12,6 +12,8 @@ class Apiary {
             beehives: Beehive
     ]
 
+    static transients = ['sortedBeehive']
+
     static constraints = {
         x nullable: true
         y nullable: true
@@ -28,5 +30,29 @@ class Apiary {
     @Override
     String toString() {
         getLabel()
+    }
+
+    List<Beehive> getSortedBeehives() {
+        beehives.sort { it.name }
+    }
+
+    Beehive getPrevBeehive(Beehive beehive) {
+        getBeehiveAt(getIndex(beehive) - 1)
+    }
+
+    Beehive getNextBeehive(Beehive beehive) {
+        getBeehiveAt(getIndex(beehive) + 1)
+    }
+
+    Integer getIndex(Beehive beehive) {
+        sortedBeehives.indexOf(beehive)
+    }
+
+    Beehive getBeehiveAt(int index) {
+        if (index >= 0 && index < beehives.size()) {
+            return sortedBeehives[index]
+        } else {
+            return null
+        }
     }
 }

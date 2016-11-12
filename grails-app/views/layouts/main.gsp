@@ -57,7 +57,7 @@
     </div>
 </nav>
 
-<g:pageProperty name="page.breadcrumb" />
+<g:pageProperty name="page.header" />
 
 <div class="container">
     <div class="content" role="main">

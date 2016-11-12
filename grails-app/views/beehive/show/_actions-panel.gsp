@@ -27,10 +27,10 @@
         <g:set var="lastYear" value="${currentYear - 1}"/>
         <g:set var="beforeLastYear" value="${currentYear - 2}"/>
         <g:render template="show/actions-year-panel"
-                  model="[title: currentYear, year: currentYear, yearActions: beehive.getSortedActions(currentYear..3000), expanded: true]"/>
+                  model="[title: currentYear, yearRange: currentYear..3000, expanded: true]"/>
         <g:render template="show/actions-year-panel"
-                  model="[title: lastYear, year: lastYear, yearActions: beehive.getSortedActions(lastYear..lastYear)]"/>
+                  model="[title: lastYear, yearRange: lastYear..lastYear]"/>
         <g:render template="show/actions-year-panel"
-                  model="[title: 'vor ' + beforeLastYear, year: beforeLastYear, yearActions: beehive.getSortedActions(0..beforeLastYear)]"/>
+                  model="[title: 'vor ' + beforeLastYear, yearRange: 0..beforeLastYear]"/>
     </div>
 </b:panel>

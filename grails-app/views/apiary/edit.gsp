@@ -8,13 +8,6 @@
 
 <body>
 
-<content tag="breadcrumb">
-    <ol class="breadcrumb">
-        <li><g:link resource="apiary" action="index"><g:message code="apiary.plural.label"/></g:link></li>
-        <li><g:link resource="apiary" action="edit" id="${apiary.id}"><g:message code="default.edit.label"
-                                                                                 args="[entityName]"/></g:link></li>
-    </ol>
-</content>
 
 <content tag="errors">
     <g:render template="/templates/errors" model="[instance: this.apiary]"/>
