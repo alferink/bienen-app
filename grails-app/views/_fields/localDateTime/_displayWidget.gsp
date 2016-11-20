@@ -1,1 +1,1 @@
-${value.format(java.time.format.DateTimeFormatter.ofPattern(g.message(code: 'default.datetime.format')))}
+<time datetime="${value?.format(java.time.format.DateTimeFormatter.ISO_DATE_TIME)}">${value?.format(java.time.format.DateTimeFormatter.ofPattern(g.message(code: 'default.datetime.format')))}</time>

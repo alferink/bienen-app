@@ -12,10 +12,6 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="pull-right" style="padding: 10px">
-                <g:link class="btn btn-default" resource="apiary" id="${beehive.apiary?.id}" action="show" >
-                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                    ${beehive.apiary}
-                </g:link>
                 <g:set var="prevBeehive" value="${beehive.apiary?.getPrevBeehive(beehive)}" />
                 <g:if test="${prevBeehive}">
                     <g:link class="btn btn-default" resource="beehive" id="${prevBeehive.id}" action="show" >
@@ -30,6 +26,10 @@
                         ${nextBeehive}
                     </g:link>
                 </g:if>
+                <g:link class="btn btn-default" resource="apiary" id="${beehive.apiary?.id}" action="show" >
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    ${beehive.apiary}
+                </g:link>
         </div>
     </div>
 </content>
@@ -62,9 +62,35 @@
             <f:display bean="beehive" property="apiary"/>
         </b:panel>
 
-        <b:panel label="Statistik" headerActions="${[edit]}">
-            <g:link resource="beehive/beehiveMeasurement" beehiveId="${beehive.id}"
-                    action="index">Statistik</g:link>
+
+        <g:set var="showStatistics">
+            <g:link resource="beehive/beehiveMeasurement" beehiveId="${beehive.id}" action="index">
+                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+            </g:link>
+        </g:set>
+
+        <b:panel label="Statistik" headerActions="${[showStatistics]}">
+
+            <g:set var="honeyHarvestLabel" value="${g.message(code: 'beehiveStatistics.honeyHarvest.years.label', args: [beehiveStatistics.dateTime.year.toString(), (beehiveStatistics.dateTime.year-1).toString()])}" />
+
+            <f:display bean="beehiveStatistics" property="honeyQuantity" label="${honeyHarvestLabel}">
+                ${value} kg (${beehiveStatistics.honeyQuantityLastYear} kg)
+            </f:display>
+            <fieldset class="form">
+                <label>Messungen (<f:displayWidget bean="beehiveStatistics" property="latestMeasurement.dateTime" />)</label>
+                <f:display bean="beehiveStatistics" property="latestMeasurement.outsideTemperature" >
+                    ${value?.round(1)} °C
+                </f:display>
+                <f:display bean="beehiveStatistics" property="latestMeasurement.insideTemperature" >
+                    ${value?.round(1)} °C
+                </f:display>
+                <f:display bean="beehiveStatistics" property="latestMeasurement.outsideHumidity" >
+                    ${value?.round(0)} %
+                </f:display>
+                <f:display bean="beehiveStatistics" property="latestMeasurement.weight" >
+                    ${value?.round(1)} kg (${beehiveStatistics.latestMeasurement?.weightDifference?.round(1)} kg)
+                </f:display>
+            </fieldset>
         </b:panel>
     </div>
 

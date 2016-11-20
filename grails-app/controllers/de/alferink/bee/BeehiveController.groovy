@@ -29,4 +29,10 @@ class BeehiveController extends RestfulController<Beehive> {
         }
         beehiveService.createBeehive(beehiveCreation)
     }
+
+    def show() {
+        def beehive = queryForResource(params.id)
+        respond beehive, [model: [beehiveStatistics: beehiveService.createBeehiveStatistics(beehive)]]
+    }
+
 }

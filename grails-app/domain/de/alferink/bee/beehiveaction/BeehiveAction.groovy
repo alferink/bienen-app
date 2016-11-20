@@ -2,7 +2,10 @@ package de.alferink.bee.beehiveaction
 
 import de.alferink.bee.Beehive
 
+import java.time.Instant
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class BeehiveAction {
 
@@ -16,7 +19,7 @@ class BeehiveAction {
         beehive cascadeValidation: true
     }
 
-    static transients = ['type']
+    static transients = ['type', 'dateTime']
 
     static mapping = {
         id generator: 'uuid'
@@ -24,6 +27,11 @@ class BeehiveAction {
 
     BeehiveActionType getType() {
         BeehiveActionType.values().find { it.actionClass == this.class }
+    }
+
+    LocalDateTime getDateTime() {
+        Instant instant = Instant.ofEpochMilli(date.getTime());
+        LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
     }
 
     void execute() {

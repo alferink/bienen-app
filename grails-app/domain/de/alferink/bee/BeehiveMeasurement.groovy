@@ -21,6 +21,7 @@ class BeehiveMeasurement {
     Double insideTemperature // °C
     Double outsideHumidity // %
     Double weight // kg
+    Double weightDifference // kg
 
     MeasurementTyp type
 
@@ -29,6 +30,7 @@ class BeehiveMeasurement {
     static transients = ['dateTime']
 
     static constraints = {
+        weightDifference nullable: true
     }
 
     static mapping = {
@@ -36,7 +38,9 @@ class BeehiveMeasurement {
     }
 
     LocalDateTime getDateTime() {
-        Instant instant = Instant.ofEpochMilli(date.getTime());
-        LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        if(date) {
+            Instant instant = Instant.ofEpochMilli(date.getTime());
+            LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        }
     }
 }

@@ -13,6 +13,7 @@
 //= require /webjars/typeaheadjs/0.11.1/typeahead.bundle.js
 //= require star-rating.js
 //= require bee.js
+//= require moment-with-locales.js
 
 if (typeof jQuery !== 'undefined') {
     (function($) {
@@ -26,4 +27,12 @@ if (typeof jQuery !== 'undefined') {
 
 $(document).ready(function () {
     $('.dropdown-toggle').dropdown();
+});
+
+$(document).ready(function () {
+    moment.locale('de');
+    $( "time" ).each(function( index ) {
+        var dateTime = $(this).attr('datetime');
+        $(this).text(moment(dateTime).fromNow());
+    });
 });

@@ -55,6 +55,7 @@ class BeehiveMeasurementService {
 
     private void calculateMeasurements(LocalDateTime start, LocalDateTime end, List<BeehiveMeasurement> measurements, Beehive beehive, BeehiveMeasurement.MeasurementTyp type) {
         LocalDateTime currentDate = start
+        Double lastWeight
         while (currentDate.isBefore(end)) {
             LocalDateTime from = currentDate.minusMinutes(type == BeehiveMeasurement.MeasurementTyp.HOURLY ? 30 : 720)
             LocalDateTime till = currentDate.plusMinutes(type == BeehiveMeasurement.MeasurementTyp.HOURLY ? 30 : 720)
@@ -76,7 +77,10 @@ class BeehiveMeasurementService {
                         weight: measurementForDate.sum { it.weight } / count,
                         beehive: beehive
                 )
+                m.weightDifference = lastWeight ? m.weight - lastWeight : 0.0
                 m.save()
+
+                lastWeight = m.weight
             } else {
                 println 'NICHT GEFUNEN'
             }
