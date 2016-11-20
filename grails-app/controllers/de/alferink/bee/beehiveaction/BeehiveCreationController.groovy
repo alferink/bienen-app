@@ -1,9 +1,9 @@
 package de.alferink.bee.beehiveaction
 
+import de.alferink.bee.BeeRestfulController
 import de.alferink.bee.BeehiveService
-import grails.rest.RestfulController
 
-class BeehiveCreationController extends RestfulController<BeehiveCreation> {
+class BeehiveCreationController extends BeeRestfulController<BeehiveCreation> {
 
     BeehiveService beehiveService
 

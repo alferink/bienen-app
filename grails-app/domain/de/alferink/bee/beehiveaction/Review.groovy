@@ -45,6 +45,7 @@ class Review extends BeehiveAction {
 
     @Override
     void execute() {
+        super.execute()
         if(brutraum) {
             beehive.brutraum += brutraum
         }

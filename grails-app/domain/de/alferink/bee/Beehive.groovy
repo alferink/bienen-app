@@ -2,8 +2,7 @@ package de.alferink.bee
 
 import de.alferink.bee.beehiveaction.BeehiveAction
 import de.alferink.bee.beehiveaction.BeehiveCreation
-
-import java.time.LocalDate
+import de.alferink.bee.beehiveaction.BeehiveDissolved
 
 class Beehive {
 
@@ -16,6 +15,7 @@ class Beehive {
 
     Set<BeehiveAction> actions
     BeehiveCreation beehiveCreation
+    BeehiveDissolved beehiveDissolved
 
     Apiary apiary
 
@@ -34,6 +34,7 @@ class Beehive {
         honigraum min: 0
         apiary nullable: true
         queen nullable: true
+        beehiveDissolved nullable: true
     }
 
     static mapping = {

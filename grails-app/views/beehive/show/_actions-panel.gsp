@@ -21,11 +21,10 @@
 </g:set>
 
 <b:panel label="beehive.panel.actions.label" headerActions="${[actionCreate]}">
-
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <g:set var="currentYear" value="${java.time.Year.now().getValue()}"/>
         <g:set var="lastYear" value="${currentYear - 1}"/>
         <g:set var="beforeLastYear" value="${currentYear - 2}"/>
+
         <g:render template="show/actions-year-panel"
                   model="[title: currentYear, yearRange: currentYear..3000, expanded: true]"/>
         <g:render template="show/actions-year-panel"

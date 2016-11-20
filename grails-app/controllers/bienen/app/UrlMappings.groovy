@@ -20,8 +20,9 @@ class UrlMappings {
             "/varroachecks"(resources: 'varroaCheck')
             "/varroatreatments"(resources: 'varroaTreatment')
             "/queenInstallations"(resources: 'queenInstallation')
-
             "/measurements"(resources: 'beehiveMeasurement')
+
+            "/beehiveDissolved"(resources: 'beehiveDissolved')
         }
 
         "/"(controller: "apiary", action: 'index')

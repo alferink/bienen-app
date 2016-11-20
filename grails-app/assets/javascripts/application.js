@@ -16,10 +16,10 @@
 //= require moment-with-locales.js
 
 if (typeof jQuery !== 'undefined') {
-    (function($) {
-        $('#spinner').ajaxStart(function() {
+    (function ($) {
+        $('#spinner').ajaxStart(function () {
             $(this).fadeIn();
-        }).ajaxStop(function() {
+        }).ajaxStop(function () {
             $(this).fadeOut();
         });
     })(jQuery);
@@ -31,8 +31,14 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     moment.locale('de');
-    $( "time" ).each(function( index ) {
+    $("time").each(function (index) {
         var dateTime = $(this).attr('datetime');
         $(this).text(moment(dateTime).fromNow());
+    });
+});
+
+$(document).ready(function () {
+    $("button.delete").click(function (e) {
+        return confirm('Are you sure?');
     });
 });

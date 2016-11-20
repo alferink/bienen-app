@@ -3,11 +3,10 @@ package de.alferink.bee.beehiveaction
 import de.alferink.bee.Beehive
 
 import java.time.Instant
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-class BeehiveAction {
+class BeehiveDissolved {
 
     String id
     Date date
@@ -16,13 +15,13 @@ class BeehiveAction {
 
     static constraints = {
         anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
-        beehive cascadeValidation: true
         date validator: { val, obj, errors  ->
-            if (obj.beehive?.beehiveCreation?.dateTime && obj.beehive?.beehiveCreation?.dateTime?.isAfter(obj.dateTime)) {
-                errors.rejectValue('date', 'actionBeforeCreation')
-            }
-            if (obj.beehive?.beehiveDissolved?.dateTime && obj.dateTime?.isAfter(obj.beehive?.beehiveDissolved?.dateTime)) {
+            BeehiveAction latestAction = obj.beehive.actions?.max{ it.date }
+            if (latestAction && obj.dateTime.isBefore(latestAction.dateTime)) {
                 errors.rejectValue('date', 'actionAfterDissolved')
+            }
+            if (obj.beehive?.beehiveCreation?.dateTime && obj.dateTime.isBefore(obj.beehive?.beehiveCreation?.dateTime)) {
+                errors.rejectValue('date', 'dissolvedAfterCreated')
             }
         }
     }
@@ -42,7 +41,14 @@ class BeehiveAction {
         LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
     }
 
+    boolean isInYears(IntRange years) {
+        Calendar calendar = Calendar.getInstance()
+        calendar.setTime(date)
+        int year = calendar.get(Calendar.YEAR)
+        years.containsWithinBounds(year)
+    }
+
     void execute() {
-        beehive?.addToActions(this)
+        beehive?.beehiveDissolved = this
     }
 }

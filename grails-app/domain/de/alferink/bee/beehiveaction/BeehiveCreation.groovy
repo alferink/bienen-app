@@ -5,7 +5,10 @@ import de.alferink.bee.Beehive
 import de.alferink.bee.HiveType
 import de.alferink.bee.Queen
 
+import java.time.Instant
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class BeehiveCreation {
 
@@ -26,13 +29,22 @@ class BeehiveCreation {
 
     static belongsTo = [beehive: Beehive]
 
-    static transients = ['type']
+    static transients = ['type', 'dateTime']
 
     static constraints = {
         anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
         beehive cascadeValidation: true
         queen nullable: true
         hasQueen nullable: true
+        created validator: { val, obj, errors  ->
+            BeehiveAction latestAction = obj.beehive.actions?.max{ it.date }
+            if (latestAction && obj.dateTime.isAfter(latestAction.dateTime)) {
+                errors.rejectValue('created', 'actionBeforeCreation')
+            }
+            if (obj.beehive?.beehiveDissolved?.dateTime && obj.dateTime.isBefore(obj.beehive?.beehiveDissolved?.dateTime)) {
+                errors.rejectValue('created', 'dissolvedAfterCreated')
+            }
+        }
     }
 
     static mapping = {
@@ -62,5 +74,10 @@ class BeehiveCreation {
         calendar.setTime(created)
         int year = calendar.get(Calendar.YEAR)
         years.containsWithinBounds(year)
+    }
+
+    LocalDateTime getDateTime() {
+        Instant instant = Instant.ofEpochMilli(created.getTime());
+        LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
     }
 }

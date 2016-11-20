@@ -1,12 +1,13 @@
 package de.alferink.bee.beehiveaction
 
+import de.alferink.bee.BeeRestfulController
 import de.alferink.bee.Beehive
 import de.alferink.bee.BeehiveService
 import grails.artefact.Artefact
 import grails.rest.RestfulController
 
 @Artefact("Controller")
-class BeehiveActionController<T extends BeehiveAction> extends RestfulController<T> {
+class BeehiveActionController<T extends BeehiveAction> extends BeeRestfulController<T> {
 
     BeehiveService beehiveService
 
@@ -38,5 +39,10 @@ class BeehiveActionController<T extends BeehiveAction> extends RestfulController
         beehiveService.updateBeehive(resource.beehive)
         resource.beehive.save flush: true
         return resource
+    }
+
+    @Override
+    protected void redirectAfterDelete(T beehiveAction) {
+        redirect resource: "beehive", method: "GET", id: beehiveAction?.beehive?.id
     }
 }

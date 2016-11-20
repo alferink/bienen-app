@@ -16,6 +16,38 @@
              aria-labelledby="collapseListGroupHeading${yearRange.from}">
 
             <ul class="list-group">
+
+                <g:if test="${beehive.beehiveDissolved?.isInYears(yearRange)}">
+                    <li class="list-group-item">
+                        <div>
+                            <h4>
+                                ${beehive.beehiveDissolved.type.label}
+                                <small>
+                                    <span>(<g:formatDate date="${beehive.beehiveDissolved.date}" type="date"/>)</span>
+                                    <g:link resource="beehive/${beehive.beehiveDissolved.type.propertyName}" beehiveId="${beehive.id}"
+                                            id="${beehive.beehiveDissolved.id}" action="edit">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </g:link>
+                                <g:form resource="beehive/${beehive.beehiveDissolved.type.propertyName}"
+                                        beehiveId="${beehive.id}"
+                                        id="${beehive.beehiveDissolved.id}"
+                                        action="delete"
+                                        method="DELETE"
+                                        class="form-inline">
+                                    <button type="submit"
+                                            class="btn btn-link btn-sm delete">
+                                        <i class="glyphicon glyphicon-remove icon-alert"></i>
+                                    </button>
+                                </g:form>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <g:render template="/${beehive.beehiveDissolved.type.propertyName}/summary" model="[beehiveDissolved: beehive.beehiveDissolved]"/>
+                        </div>
+                    </li>
+                </g:if>
+
                 <g:each in="${yearActions}">
                     <li class="list-group-item">
                         <div>
@@ -27,7 +59,18 @@
                                             id="${it.id}" action="edit">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                     </g:link>
-                                </small>
+                                    <g:form resource="beehive/${it.type.propertyName}"
+                                            beehiveId="${it.beehive.id}"
+                                            id="${it.id}"
+                                            action="delete"
+                                            method="DELETE"
+                                            class="form-inline">
+                                        <button type="submit"
+                                                class="btn btn-link btn-sm delete">
+                                            <i class="glyphicon glyphicon-remove icon-alert"></i>
+                                        </button>
+                                    </g:form>
+                            </small>
                             </h4>
                         </div>
 

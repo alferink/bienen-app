@@ -1,7 +1,12 @@
 .content {
     margin-top: 30px;
 }
-
+.form-inline {
+    display: inline;
+}
+.icon-alert {
+    color: #b94a48;
+}
 
 /*!* FONT STACK *!*/
 /*body,*/
