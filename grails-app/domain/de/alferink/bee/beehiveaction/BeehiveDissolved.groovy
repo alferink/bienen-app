@@ -21,7 +21,7 @@ class BeehiveDissolved {
                 errors.rejectValue('date', 'actionAfterDissolved')
             }
             if (obj.beehive?.beehiveCreation?.dateTime && obj.dateTime.isBefore(obj.beehive?.beehiveCreation?.dateTime)) {
-                errors.rejectValue('date', 'dissolvedAfterCreated')
+                errors.rejectValue('date', 'dissolvedBeforeCreated')
             }
         }
     }

@@ -41,8 +41,8 @@ class BeehiveCreation {
             if (latestAction && obj.dateTime.isAfter(latestAction.dateTime)) {
                 errors.rejectValue('created', 'actionBeforeCreation')
             }
-            if (obj.beehive?.beehiveDissolved?.dateTime && obj.dateTime.isBefore(obj.beehive?.beehiveDissolved?.dateTime)) {
-                errors.rejectValue('created', 'dissolvedAfterCreated')
+            if (obj.beehive?.beehiveDissolved?.dateTime && obj.dateTime.isAfter(obj.beehive?.beehiveDissolved?.dateTime)) {
+                errors.rejectValue('created', 'dissolvedBeforeCreated')
             }
         }
     }

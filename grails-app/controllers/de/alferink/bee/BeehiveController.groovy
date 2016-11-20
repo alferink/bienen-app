@@ -3,6 +3,8 @@ package de.alferink.bee
 import de.alferink.bee.beehiveaction.BeehiveCreation
 import grails.rest.RestfulController
 
+import java.time.LocalDate
+
 class BeehiveController extends RestfulController<Beehive> {
 
     BeehiveService beehiveService
