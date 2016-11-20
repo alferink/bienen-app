@@ -1,4 +1,7 @@
 <b:panel label="beehive.panel.main.label">
+    <g:if test="${beehive.beehiveDissolved}">
+        <div class="alert alert-danger" role="alert"><g:message code="beehive.dissolved.message"/></div>
+    </g:if>
     <f:display bean="beehive" property="created"/>
     <f:display bean="beehive" property="name"/>
     <f:display bean="beehive" property="queen">

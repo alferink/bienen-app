@@ -1,1 +1,1 @@
-<time datetime="${g.formatDate(date: value, pattern: "yyyy-MM-dd'T'HH:mm:ss'Z'")}" title="${g.formatDate(date: value)}">${g.formatDate(date: value)}</time>
+<time datetime="${g.formatDate(date: value, format: "yyyy-MM-dd'T'HH:mm:ss'Z'")}" title="${g.formatDate(date: value)}">${g.formatDate(date: value)}</time>
