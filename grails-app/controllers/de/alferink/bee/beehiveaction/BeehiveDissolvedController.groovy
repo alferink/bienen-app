@@ -1,7 +1,9 @@
 package de.alferink.bee.beehiveaction
 
 import de.alferink.bee.BeeRestfulController
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class BeehiveDissolvedController extends BeeRestfulController<BeehiveDissolved> {
 
     BeehiveDissolvedController() {

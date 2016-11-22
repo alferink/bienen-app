@@ -2,7 +2,9 @@ package de.alferink.bee.beehiveaction
 
 import de.alferink.bee.BeeRestfulController
 import de.alferink.bee.BeehiveService
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class BeehiveCreationController extends BeeRestfulController<BeehiveCreation> {
 
     BeehiveService beehiveService

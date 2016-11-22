@@ -1,10 +1,12 @@
 package de.alferink.bee
 
 import de.alferink.bee.beehiveaction.BeehiveCreation
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.RestfulController
 
 import java.time.LocalDate
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class BeehiveController extends RestfulController<Beehive> {
 
     BeehiveService beehiveService

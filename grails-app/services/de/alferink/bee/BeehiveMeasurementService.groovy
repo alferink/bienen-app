@@ -13,7 +13,7 @@ class BeehiveMeasurementService {
     def aggregateMeasurements(Beehive beehive) {
         List<BeehiveMeasurement> result = []
 
-        List<BeehiveMeasurement> measurements = beehive.measurements.findAll{
+        List<BeehiveMeasurement> measurements = BeehiveMeasurement.findAllByBeehive(beehive){
             it.type == BeehiveMeasurement.MeasurementTyp.RAW
         } as List
 

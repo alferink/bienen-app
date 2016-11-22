@@ -24,7 +24,6 @@ class Beehive {
 
     static hasMany = [
             actions     : BeehiveAction,
-            measurements: BeehiveMeasurement
     ]
 
     static transients = ['sortedActions']

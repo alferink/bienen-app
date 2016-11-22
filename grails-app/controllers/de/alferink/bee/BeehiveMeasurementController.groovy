@@ -1,7 +1,9 @@
 package de.alferink.bee
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.RestfulController
 
+@Secured(['ROLE_ADMIN', 'ROLE_USER'])
 class BeehiveMeasurementController extends RestfulController<BeehiveMeasurement> {
 
     BeehiveMeasurementController() {
