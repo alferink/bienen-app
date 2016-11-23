@@ -16,7 +16,6 @@ class BeehiveAction {
 
     static constraints = {
         anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
-        beehive cascadeValidation: true
         date validator: { val, obj, errors  ->
             if (obj.beehive?.beehiveCreation?.dateTime && obj.beehive?.beehiveCreation?.dateTime?.isAfter(obj.dateTime)) {
                 errors.rejectValue('date', 'actionBeforeCreation')

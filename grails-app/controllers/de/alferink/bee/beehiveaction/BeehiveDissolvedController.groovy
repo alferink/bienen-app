@@ -22,13 +22,12 @@ class BeehiveDissolvedController extends BeeRestfulController<BeehiveDissolved> 
         if (!beehiveDissolved.date) {
             beehiveDissolved.date = new Date()
         }
-        beehiveDissolved.execute()
-
         beehiveDissolved
     }
 
     @Override
     protected BeehiveDissolved saveResource(BeehiveDissolved beehiveDissolved) {
+        beehiveDissolved.execute()
         return super.saveResource(beehiveDissolved)
     }
 

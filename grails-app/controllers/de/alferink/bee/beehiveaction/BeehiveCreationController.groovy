@@ -19,7 +19,6 @@ class BeehiveCreationController extends BeeRestfulController<BeehiveCreation> {
         if (!beehiveCreation.created) {
             beehiveCreation.created = new Date()
         }
-        beehiveService.createBeehive(beehiveCreation)
         beehiveCreation
     }
 
@@ -27,6 +26,13 @@ class BeehiveCreationController extends BeeRestfulController<BeehiveCreation> {
     def show() {
         BeehiveCreation beehiveCreation = queryForResource(params.id)
         redirect beehiveCreation.beehive
+    }
+
+    @Override
+    protected BeehiveCreation saveResource(BeehiveCreation beehiveCreation) {
+        beehiveService.createBeehive(beehiveCreation)
+        beehiveCreation.beehive.save flush: true
+        return beehiveCreation
     }
 
     @Override

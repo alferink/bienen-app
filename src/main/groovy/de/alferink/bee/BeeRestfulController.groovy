@@ -4,6 +4,7 @@ import grails.rest.RestfulController
 import grails.transaction.Transactional
 import grails.web.http.HttpHeaders
 
+import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NO_CONTENT
 import static org.springframework.http.HttpStatus.OK
 
@@ -11,6 +12,37 @@ class BeeRestfulController<T> extends RestfulController<T> {
 
     BeeRestfulController(Class<T> resource) {
         super(resource)
+    }
+
+    /**
+     * Saves a resource
+     */
+    @Transactional
+    def save() {
+        if(handleReadOnly()) {
+            return
+        }
+        def instance = createResource()
+
+        saveResource instance
+        if (instance.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond instance.errors, view:'create' // STATUS CODE 422
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [classMessageArg, instance.id])
+                redirect instance
+            }
+            '*' {
+                response.addHeader(HttpHeaders.LOCATION,
+                        grailsLinkGenerator.link( resource: this.controllerName, action: 'show',id: instance.id, absolute: true,
+                                namespace: hasProperty('namespace') ? this.namespace : null ))
+                respond instance, [status: CREATED, view:'show']
+            }
+        }
     }
 
     /**
@@ -31,14 +63,14 @@ class BeeRestfulController<T> extends RestfulController<T> {
         }
 
         instance.properties = getObjectToBind()
+        updateResource instance
 
-        if (!instance.validate()) {
+        if (instance.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond instance.errors, view:'edit' // STATUS CODE 422
             return
         }
 
-        updateResource instance
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [classMessageArg, instance.id])

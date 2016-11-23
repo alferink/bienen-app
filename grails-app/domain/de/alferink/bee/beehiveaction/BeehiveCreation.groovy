@@ -33,7 +33,6 @@ class BeehiveCreation {
 
     static constraints = {
         anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
-        beehive cascadeValidation: true
         queen nullable: true
         hasQueen nullable: true
         created validator: { val, obj, errors  ->

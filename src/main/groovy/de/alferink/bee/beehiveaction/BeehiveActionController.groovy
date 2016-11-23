@@ -4,7 +4,6 @@ import de.alferink.bee.BeeRestfulController
 import de.alferink.bee.Beehive
 import de.alferink.bee.BeehiveService
 import grails.artefact.Artefact
-import grails.rest.RestfulController
 
 @Artefact("Controller")
 class BeehiveActionController<T extends BeehiveAction> extends BeeRestfulController<T> {
@@ -24,8 +23,14 @@ class BeehiveActionController<T extends BeehiveAction> extends BeeRestfulControl
         if (!beehiveAction.beehive) {
             beehiveAction.beehive = Beehive.get(params.beehiveId)
         }
-        beehiveService.executeAction(beehiveAction)
         beehiveAction
+    }
+
+    @Override
+    protected T saveResource(T beehiveAction) {
+        beehiveService.updateBeehive(beehiveAction.beehive)
+        beehiveAction.beehive.save flush: true
+        beehiveAction.save flush: true
     }
 
     @Override
@@ -35,10 +40,10 @@ class BeehiveActionController<T extends BeehiveAction> extends BeeRestfulControl
     }
 
     @Override
-    protected T updateResource(T resource) {
-        beehiveService.updateBeehive(resource.beehive)
-        resource.beehive.save flush: true
-        return resource
+    protected T updateResource(T beehiveAction) {
+        beehiveService.updateBeehive(beehiveAction.beehive)
+        beehiveAction.beehive.save flush: true
+        beehiveAction.save flush: true
     }
 
     @Override
