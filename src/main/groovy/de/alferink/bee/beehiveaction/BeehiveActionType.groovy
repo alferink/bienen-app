@@ -15,6 +15,7 @@ enum BeehiveActionType {
     VARROA_CHECK(VarroaCheck),
     VARROA_TREATMENT(VarroaTreatment),
     QUEEN_INSTALLATION(QueenInstallation),
+    MOVE_BEEHIVE(MoveBeehive),
     BEEHIVE_DISSOLVED(BeehiveDissolved)
 
     final Class<? extends BeehiveAction> actionClass

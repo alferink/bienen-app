@@ -15,6 +15,7 @@ class UrlMappings {
                 "/varroatreatments"(resources: 'varroaTreatment')
                 "/queenInstallations"(resources: 'queenInstallation')
                 "/measurements"(resources: 'beehiveMeasurement')
+                "/moveBeehive"(resources: 'moveBeehive')
 
                 "/beehiveDissolved"(resources: 'beehiveDissolved')
             }
