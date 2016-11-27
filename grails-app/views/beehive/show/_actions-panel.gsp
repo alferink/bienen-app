@@ -2,9 +2,9 @@
 
 <g:set var="actionCreate">
     <div class="dropdown">
-        <a id="dLabel" class="dropdown-toggle" data-target="#" href="#"
+        <a id="dLabel" class="dropdown-toggle header-link" data-target="#" href="#"
            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span class="caret"></span>
+            <i class="fa fa-plus" aria-hidden="true"></i><span class="caret"></span>
         </a>
 
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">

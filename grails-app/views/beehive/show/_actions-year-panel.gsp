@@ -26,7 +26,7 @@
                                     <span>(<g:formatDate date="${beehive.beehiveDissolved.date}" type="date"/>)</span>
                                     <g:link resource="beehive/${beehive.beehiveDissolved.type.propertyName}" beehiveId="${beehive.id}"
                                             id="${beehive.beehiveDissolved.id}" action="edit">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </g:link>
                                 <g:form resource="beehive/${beehive.beehiveDissolved.type.propertyName}"
                                         beehiveId="${beehive.id}"
@@ -35,8 +35,8 @@
                                         method="DELETE"
                                         class="form-inline">
                                     <button type="submit"
-                                            class="btn btn-link btn-sm delete">
-                                        <i class="glyphicon glyphicon-remove icon-alert"></i>
+                                            class="btn btn-link btn-sm btn-inline">
+                                        <i class="fa fa-ban icon-alert" aria-hidden="true"></i>
                                     </button>
                                 </g:form>
                             </h4>
@@ -57,7 +57,7 @@
                                     <span>(<g:formatDate date="${it.date}" type="date"/>)</span>
                                     <g:link resource="beehive/${it.type.propertyName}" beehiveId="${it.beehive.id}"
                                             id="${it.id}" action="edit">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </g:link>
                                     <g:form resource="beehive/${it.type.propertyName}"
                                             beehiveId="${it.beehive.id}"
@@ -66,8 +66,8 @@
                                             method="DELETE"
                                             class="form-inline">
                                         <button type="submit"
-                                                class="btn btn-link btn-sm delete">
-                                            <i class="glyphicon glyphicon-remove icon-alert"></i>
+                                                class="btn btn-link btn-sm btn-inline">
+                                            <i class="fa fa-ban icon-alert" aria-hidden="true"></i>
                                         </button>
                                     </g:form>
                             </small>
@@ -89,7 +89,7 @@
                                     <span>(<g:formatDate date="${beehive.beehiveCreation.created}" type="date"/>)</span>
                                     <g:link resource="beehive/${beehive.beehiveCreation.type.propertyName}" beehiveId="${beehive.id}"
                                             id="${beehive.beehiveCreation.id}" action="edit">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </g:link>
                                 </small>
                             </h4>

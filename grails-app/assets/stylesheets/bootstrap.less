@@ -1,0 +1,49 @@
+@import "/webjars/bootstrap/3.3.7-1/less/bootstrap.less";
+
+//@bee-base-color: #E5B253;
+
+
+@brand-primary: #3B52AD;
+@header-border-color: #FEC540;
+@header-bg-color: #FFD573;
+@header-light-bg-color: lighten(@header-bg-color, 15%);
+@header-lighter-bg-color: lighten(@header-bg-color, 20%);
+
+@navbar-default-color:             @brand-primary;
+@navbar-default-bg:                @header-bg-color;
+
+@navbar-default-link-color:                @brand-primary;
+@navbar-default-link-hover-color:          darken(@navbar-default-color, 10%);
+@navbar-default-link-active-color:         darken(@navbar-default-color, 5%);
+@navbar-default-link-disabled-color:       darken(@navbar-default-color, 15%);
+@navbar-default-toggle-color:              #FFB300;
+@navbar-default-toggle-hover-bg:           darken(@navbar-default-toggle-color, 5%);
+@navbar-default-toggle-icon-bar-bg:        darken(@navbar-default-toggle-color, 10%);
+@navbar-default-toggle-border-color:       darken(@navbar-default-toggle-color, 15%);
+
+
+@panel-bg:                    @header-light-bg-color;
+@panel-inner-border:          @header-border-color;
+@panel-footer-bg:             @header-bg-color;
+@panel-default-border:        @panel-inner-border;
+@panel-default-heading-bg:    @panel-footer-bg;
+
+@breadcrumb-color:              @brand-primary;
+
+@list-group-bg:                 @header-lighter-bg-color;
+
+@dropdown-bg: @header-light-bg-color;
+
+@input-bg: @header-lighter-bg-color;
+
+.panel-default > .panel-heading {
+  color: @brand-primary;
+  font-weight: bold;
+}
+
+button.btn-inline {
+  border: 0px;
+  padding: 0px;
+}
+
+@icon-font-path: 'webjars/bootstrap/3.3.7-1/fonts/';

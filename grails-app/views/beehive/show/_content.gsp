@@ -2,7 +2,6 @@
     <g:if test="${beehive.beehiveDissolved}">
         <div class="alert alert-danger" role="alert"><g:message code="beehive.dissolved.message"/></div>
     </g:if>
-    <f:display bean="beehive" property="created"/>
     <f:display bean="beehive" property="name"/>
     <f:display bean="beehive" property="queen">
         <g:if test="${value}">
@@ -21,15 +20,16 @@
         </g:else>
     </f:display>
     <f:display bean="beehive" property="hiveType"/>
-    <f:display bean="beehive" property="brutraum"/>
-    <f:display bean="beehive" property="honigraum"/>
+    <f:display bean="beehive" property="brutraum" label="review.brutraum.honigraum.label" >
+        ${value} / ${beehive.honigraum}
+    </f:display>
     <f:display bean="beehive" property="apiary"/>
 </b:panel>
 
 
 <g:set var="showStatistics">
-    <g:link resource="beehive/beehiveMeasurement" beehiveId="${beehive.id}" action="index">
-        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+    <g:link resource="beehive/beehiveMeasurement" beehiveId="${beehive.id}" action="index" class="header-link">
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>
     </g:link>
 </g:set>
 

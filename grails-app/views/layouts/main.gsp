@@ -12,11 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <asset:stylesheet src="application.css"/>
-    <style>
-    body {
-        padding-top: 50px;
-    }
-    </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,7 +25,7 @@
 <body>
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -40,36 +35,44 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">Bee</a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li class="active"><a href="/"><g:message code="apiary.plural.label" /></a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><g:link controller="logout"><b:currentUser /> abmelden</g:link></li>
+                <li><a href="#contact">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Kontakt
+                </a>
+                </li>
+                <li>
+                    <g:form controller="logout" method="POST">
+                        <button type="submit" class="btn btn-link">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            Abmelden
+                        </button>
+                    </g:form>
+                </li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-
-<g:pageProperty name="page.header" />
-
 <div class="container">
+    <g:pageProperty name="page.header"/>
+
     <div class="content" role="main">
-        <g:pageProperty name="page.errors" />
+        <g:pageProperty name="page.errors"/>
 
         <g:layoutBody/>
     </div>
+
+    <g:pageProperty name="page.footer"/>
 </div> <!-- /container -->
 
 <asset:javascript src="application.js"/>
-
-<g:pageProperty name="page.footer" />
 
 </body>
 </html>

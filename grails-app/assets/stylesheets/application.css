@@ -11,9 +11,9 @@
 *= require main
 *= require mobile
 *= require_self
-*= require /webjars/bootstrap/3.3.7-1/css/bootstrap
-*= require /webjars/bootstrap/3.3.7-1/css/bootstrap-theme
+*= require bootstrap.less
 *= require /webjars/bootstrap-tagsinput/0.6.1/bootstrap-tagsinput
+*= require /webjars/font-awesome/4.7.0/css/font-awesome.min.css
 *= require ie10-viewport-bug-workaround
 *= require star-rating.css
 */
