@@ -81,6 +81,8 @@ dependencies {
 assets {
     minifyJs = true
     minifyCss = true
+    excludes = ["**/*.less"]
+    includes = ["**/bootstrap.less"]
 }
 
 bootRun {
