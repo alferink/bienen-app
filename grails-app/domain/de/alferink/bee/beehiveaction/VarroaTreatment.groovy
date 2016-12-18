@@ -5,14 +5,14 @@ import de.alferink.bee.VarroaTreatmentType
 
 class VarroaTreatment extends BeehiveAction {
 
-    VarroaTreatmentDrug mittel
-    VarroaTreatmentType methode
-    String chargenNummer
-    BigDecimal menge
-    Integer befallNachBehandlung
+    VarroaTreatmentDrug medicine
+    VarroaTreatmentType method
+    String lotNumber
+    BigDecimal quantity
+    Integer infestationAfterTreatment
 
     static constraints = {
-        chargenNummer nullable: true
-        befallNachBehandlung nullable: true
+        lotNumber nullable: true
+        infestationAfterTreatment nullable: true
     }
 }

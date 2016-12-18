@@ -4,9 +4,6 @@ class Apiary {
 
     String id
     String name
-    String standort
-    BigDecimal x
-    BigDecimal y
 
     static hasMany = [
             beehives: Beehive
@@ -15,8 +12,6 @@ class Apiary {
     static transients = ['sortedBeehive']
 
     static constraints = {
-        x nullable: true
-        y nullable: true
     }
 
     static mapping = {

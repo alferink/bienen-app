@@ -10,11 +10,11 @@ class BeehiveDissolved {
 
     String id
     Date date
-    String anmerkungen
+    String notes
     static belongsTo = [beehive: Beehive]
 
     static constraints = {
-        anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
+        notes nullable: true, maxSize: 4000, widget: 'textarea'
         date validator: { val, obj, errors  ->
             BeehiveAction latestAction = obj.beehive.actions?.max{ it.date }
             if (latestAction && obj.dateTime.isBefore(latestAction.dateTime)) {

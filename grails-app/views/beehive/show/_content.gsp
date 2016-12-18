@@ -20,8 +20,8 @@
         </g:else>
     </f:display>
     <f:display bean="beehive" property="hiveType"/>
-    <f:display bean="beehive" property="brutraum" label="review.brutraum.honigraum.label" >
-        ${value} / ${beehive.honigraum}
+    <f:display bean="beehive" property="broodChamber" label="review.broodChamber.honeyChamber.label" >
+        ${value} / ${beehive.honeyChamber}
     </f:display>
     <f:display bean="beehive" property="apiary"/>
 </b:panel>

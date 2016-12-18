@@ -2,6 +2,6 @@
     <f:with bean="queenInstallation">
         <b:field property="date" widget-inputType="date"/>
         <g:render template="/queen/form" model="[queen: queenInstallation.queen, prefix: 'queen.']" />
-        <b:field property="anmerkungen"/>
+        <b:field property="notes"/>
     </f:with>
 </fieldset>

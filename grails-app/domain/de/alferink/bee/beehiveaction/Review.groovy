@@ -5,9 +5,9 @@ import de.alferink.bee.Beehive
 class Review extends BeehiveAction {
 
     // allgemeiner Befund
-    Integer ei
-    Integer made
-    Integer verdeckelt
+    Integer egg // Ei
+    Integer larva // Made
+    Integer cellCapped // verdeckelt
     Integer wabensitz
     Integer sanftmut
     Integer volksstaerke
@@ -16,8 +16,8 @@ class Review extends BeehiveAction {
     Boolean weiselrichtig
 
     // gegeben genommen
-    Integer brutraum
-    Integer honigraum
+    Integer broodChamber
+    Integer honeyChamber
     Integer mittelwaende
     Integer leerwaben
     Integer brutwaben
@@ -25,17 +25,17 @@ class Review extends BeehiveAction {
     Integer drohnenwaben
 
     static constraints = {
-        ei nullable: true, min: 0, max: 4
-        made nullable: true, min: 0, max: 4
-        verdeckelt nullable: true, min: 0, max: 4
+        egg nullable: true, min: 0, max: 4
+        larva nullable: true, min: 0, max: 4
+        cellCapped nullable: true, min: 0, max: 4
         wabensitz nullable: true, min: 0, max: 4
         sanftmut nullable: true, min: 0, max: 4
         volksstaerke nullable: true, min: 0, max: 4
 
         koeniginGesehen nullable: true
         weiselrichtig nullable: true
-        brutraum nullable: true
-        honigraum nullable: true
+        broodChamber nullable: true
+        honeyChamber nullable: true
         mittelwaende nullable: true
         leerwaben nullable: true
         brutwaben nullable: true
@@ -46,11 +46,11 @@ class Review extends BeehiveAction {
     @Override
     void execute() {
         super.execute()
-        if(brutraum) {
-            beehive.brutraum += brutraum
+        if(broodChamber) {
+            beehive.broodChamber += broodChamber
         }
-        if(honigraum) {
-            beehive.honigraum += honigraum
+        if(honeyChamber) {
+            beehive.honeyChamber += honeyChamber
         }
     }
 }

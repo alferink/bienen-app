@@ -4,6 +4,6 @@
         <b:field property="honeyType" />
         <b:field property="quantity" />
         <b:field property="waterContent" />
-        <b:field property="anmerkungen" />
+        <b:field property="notes" />
     </f:with>
 </fieldset>

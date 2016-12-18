@@ -18,7 +18,6 @@
 
         <b:panel label="beehive.apiary.main.label" headerActions="${[edit]}">
             <f:display bean="apiary" property="name"/>
-            <f:display bean="apiary" property="standort"/>
         </b:panel>
     </content>
     <content tag="sidebar">

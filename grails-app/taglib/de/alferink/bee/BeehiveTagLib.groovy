@@ -51,10 +51,16 @@ class BeehiveTagLib {
      * @attr footer
      */
     def panel = { attrs, body ->
+        if(!attrs.id) {
+            attrs.id = UUID.randomUUID().toString()
+        }
 
         String label = message(code: attrs.label, default: attrs.label)
 
+        String panelBodyId = attrs.id + '_body'
+
         out << '<div class="panel panel-default">'
+//        out << '<div class="panel panel-default" data-toggle="collapse" data-target="#' + panelBodyId + '">'
         out << '<div class="panel-heading">'
         if(attrs.headerUrl) {
             out << g.link(url: attrs.headerUrl){ label }
@@ -67,7 +73,8 @@ class BeehiveTagLib {
         }
         out << '</div>'
         out << '</div>'
-        out << '<div class="panel-body">'
+        out << '<div id="' + panelBodyId + '" class="panel-body">'
+//        out << '<div id="' + panelBodyId + '" class="panel-body collapse in">'
         out << body()
         out << '</div>'
         if (attrs.footer) {

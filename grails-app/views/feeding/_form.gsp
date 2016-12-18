@@ -3,6 +3,6 @@
         <b:field property="date" widget-inputType="date" />
         <b:field property="feed" />
         <b:field property="quantity" />
-        <b:field property="anmerkungen" />
+        <b:field property="notes" />
     </f:with>
 </fieldset>

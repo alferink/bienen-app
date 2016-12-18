@@ -6,6 +6,6 @@
         <f:display property="quantityPerDay" >
             ${value ?: g.message(code: 'default.value.calculated.message')}
         </f:display>
-        <b:field property="anmerkungen" />
+        <b:field property="notes" />
     </f:with>
 </fieldset>

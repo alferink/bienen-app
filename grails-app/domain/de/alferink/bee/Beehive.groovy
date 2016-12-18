@@ -19,8 +19,8 @@ class Beehive {
 
     Apiary apiary
 
-    Integer brutraum
-    Integer honigraum
+    Integer broodChamber
+    Integer honeyChamber
 
     static hasMany = [
             actions     : BeehiveAction,
@@ -29,8 +29,8 @@ class Beehive {
     static transients = ['sortedActions']
 
     static constraints = {
-        brutraum min: 1
-        honigraum min: 0
+        broodChamber min: 1
+        honeyChamber min: 0
         apiary nullable: true
         queen nullable: true
         beehiveDissolved nullable: true

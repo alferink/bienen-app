@@ -11,11 +11,11 @@ class BeehiveAction {
 
     String id
     Date date
-    String anmerkungen
+    String notes
     static belongsTo = [beehive: Beehive]
 
     static constraints = {
-        anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
+        notes nullable: true, maxSize: 4000, widget: 'textarea'
         date validator: { val, obj, errors  ->
             if (obj.beehive?.beehiveCreation?.dateTime && obj.beehive?.beehiveCreation?.dateTime?.isAfter(obj.dateTime)) {
                 errors.rejectValue('date', 'actionBeforeCreation')

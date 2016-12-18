@@ -22,17 +22,17 @@ class BeehiveCreation {
     Apiary apiary
 
     HiveType hiveType
-    Integer brutraum = 1
-    Integer honigraum = 0
+    Integer broodChamber = 1
+    Integer honeyChamber = 0
 
-    String anmerkungen
+    String notes
 
     static belongsTo = [beehive: Beehive]
 
     static transients = ['type', 'dateTime']
 
     static constraints = {
-        anmerkungen nullable: true, maxSize: 4000, widget: 'textarea'
+        notes nullable: true, maxSize: 4000, widget: 'textarea'
         queen nullable: true
         hasQueen nullable: true
         created validator: { val, obj, errors  ->
@@ -60,8 +60,8 @@ class BeehiveCreation {
         }
         beehive.apiary = apiary
         beehive.hiveType = hiveType
-        beehive.brutraum = brutraum
-        beehive.honigraum = honigraum
+        beehive.broodChamber = broodChamber
+        beehive.honeyChamber = honeyChamber
     }
 
     BeehiveActionType getType() {

@@ -23,7 +23,6 @@
             <b:panel label="${entityName}" footer="${g.render(template: '/templates/saveAndCancelButtons')}">
                 <fieldset class="form">
                     <f:field bean="apiary" property="name" widget-class="form-control"/>
-                    <f:field bean="apiary" property="standort" widget-class="form-control"/>
                 </fieldset>
             </b:panel>
         </div>
