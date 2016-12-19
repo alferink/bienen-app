@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-6">
-        <g:if test="${beehiveAction.ei}">
+        <g:if test="${beehiveAction.egg}">
             <f:display bean="beehiveAction" property="egg" wrapper="inline" widget="rating"/>
         </g:if>
         <g:if test="${beehiveAction.larva}">
